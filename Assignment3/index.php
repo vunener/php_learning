@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>I am registered for ICT2613 in 2022. ICT2613 has 3 assignments.</title>
+        <title>Assignment3</title>
     </head>
     <body>
         <?php include 'menu.inc'; ?>
