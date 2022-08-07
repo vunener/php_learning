@@ -1,0 +1,18 @@
+<?php
+/*
+1) Search "how to create checkboxes in php"
+2) Make the form dynamic, when submitted it must form a GET request to <where exactly?>
+   and return the $productSelected$ string, $basePrice(before VAT and discount) of the product selected.
+3) 
+$discountPercentage = 0.1;
+$vatPercentage = 0.15;
+$discountedAmount = $basePrice * $discountPercentage;
+$discountedBasePrice = $basePrice - $discountedAmount;
+$vatAmountCharged = $basePrice * $vatPercentage;
+$finalBasePrice = $basePrice + $vatAmountCharged - $discountedAmount;
+echo "The product {$productSelected$} has base price {$basePrice}, the discounted amount is {$discountedAmount}
+the discounted base price is then {$discountedBasePrice}, the amount of VAT charged is {$vatAmountCharged} and so
+the final price is {$finalBasePrice}" 
+4) 
+*/
+?>
