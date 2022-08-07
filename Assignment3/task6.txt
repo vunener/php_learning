@@ -1,7 +1,21 @@
 <?php
 /*
-This is a multiple-lines comment block
-that spans over multiple
-lines
+(a) Write a function that accepts a mark and returns the result.
+    If the mark is less than 40, then the result is fail.
+    If the mark is between 40 and 49, then the result is supplementary exam.
+    Any mark equal to or above 50 is a pass. A final mark of 75 or greater than 75 is a distinction.
+    Code the logic of deciding the result using if else if.
+
+    Invoke the function using the marks 25, 40, 45, 50, 74 and 95, and display the results for each
+    invocation. (6)
+
+(b) Write a for loop that iterates 10 times.
+    In each iteration it should generate a random number between 1 and 100,
+    and determine whether the random number is even or odd.
+    Display the random number generated and whether the number is odd or even. (5)
+(c) Repeat (b) using a do while loop. (5)
+(d) Write a while loop that iterates 10 times.
+    In each iteration it should generate a random number between 1 and 4,
+    and using a switch statement, it should display North for 1, South for 2, East for 3 and West for 4.
 */
 ?>
