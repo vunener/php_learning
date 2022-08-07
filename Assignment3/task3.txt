@@ -1,7 +1,12 @@
 <?php
 /*
-This is a multiple-lines comment block
-that spans over multiple
-lines
+1) Here make a form that asks for the name and email address of the user, two text fields.
+2) Three checkboxes `Project Leader`, `Programmer` and `Tester` - user SHOULD choose 1 but can also choose all 3
+3) Dropdown list to input one of the three dietary requirements `None`, `Vegetarian` and `Banting`. User can only choose one
+4) A `Submit` button
+NOTE:
+- All the fields and checkboxes should have labels, form must be sent using the POST request.
+- Check if every field was filed in properly and if not, notify the user that the form is incomplete and that all the fields need to be filled.
+- Present a paragraph below the form with all the data entered(use echo) in a neat and readable format.
 */
 ?>
