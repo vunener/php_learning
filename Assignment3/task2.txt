@@ -1,8 +1,17 @@
 <?php
 /*
+Create a form that present the user with a choice of two products (use check boxes).
+When the form is submitted, the base price (without value added tax (VAT))
+of the selected product will be sent via the GET method to the same page. The script should do the following:
+ a discount of 10% on the base price is calculated, which results in the discounted base price
+ VAT of 15% is added to the discounted base price, which results in the final price
+ The product selected, its base price, the discounted percentage (10%), the discounted
+amount, the discounted base price, the amount of VAT charged, and the final price is presented to the user on separate lines.
+
+//////// pseudocode
 1) Search "how to create checkboxes in php"
 2) Make the form dynamic, when submitted it must form a GET request to <where exactly?>
-   and return the $productSelected$ string, $basePrice(before VAT and discount) of the product selected.
+   and return the $productSelected string, $basePrice(before VAT and discount) of the product selected.
 3) 
 $discountPercentage = 0.1;
 $vatPercentage = 0.15;
@@ -16,3 +25,43 @@ the discounted base price is then {$discountedBasePrice}, the amount of VAT char
 the final price is {$finalBasePrice}" 
 */
 ?>
+
+///////// from internet ///////////////
+<?php
+
+// Valid options. A whitelist of allowed options.
+$productOptions = array(
+    'product1',
+    'product2'
+);
+
+// Empty array by default.
+$products = array();
+
+// If the POST var "products" is a valid array.
+if(!empty($_POST['products']) && is_array($_POST['products'])) {
+    //Loop through the array of checkbox values.
+    foreach($_POST['products'] as $product){
+        //Make sure that this option is a valid one.
+        if(in_array($product, $productOptions)){
+            //Add the selected options to our $products array.
+            $products[] = $product;
+        }
+    }
+}
+
+var_dump($produts);
+
+?>
+
+<form action="" method="post">
+    <label>
+        Product1
+        <input type="checkbox" name="products[]" value="product1">
+    </label>
+    <label>
+		Product2
+        <input type="checkbox" name="products[]" value="product2">
+    </label>
+    <input type="submit" value="Submit">
+</form>
