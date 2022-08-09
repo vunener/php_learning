@@ -3,7 +3,7 @@ echo "/////////////// Task7 (a) /////////////////////////// <br>";
 function splitString($str) {
 	$headers = explode(':', $str);
 
-    for ($x = 0; $x <= count($headers); $x++) {
+    for ($x = 1; $x <= count($headers); $x++) {
         $subString = $headers[$x];
         $subStringLength = strlen($headers[$x]);
         $lastChar = substr($headers[$x], -1);
