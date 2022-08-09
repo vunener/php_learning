@@ -52,7 +52,7 @@ var_dump($produts);
 if (isset($_POST['products'])) {
     calculatePrice();
 }
-<?php include 'menu.inc'; ?>
+include 'menu.inc';
 ?>
 <form action="" method="post">
     <label>

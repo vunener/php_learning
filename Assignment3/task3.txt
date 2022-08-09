@@ -1,74 +1,62 @@
-<?php
-/*
-1) Here make a form that asks for the name and email address of the user, two text fields.
-2) Three checkboxes `Project Leader`, `Programmer` and `Tester` - user SHOULD choose 1 but can also choose all 3
-3) Dropdown list to input one of the three dietary requirements `None`, `Vegetarian` and `Banting`. User can only choose one
-4) A `Submit` button
-NOTE:
-- All the fields and checkboxes should have labels, form must be sent using the POST request.
-- Check if every field was filed in properly and if not, notify the user that the form is incomplete and that all the fields need to be filled.
-- Present a paragraph below the form with all the data entered(use echo) in a neat and readable format.
-*/
-
-
-///// something like /////
 <!DOCTYPE HTML>
 <html>
 <head>
 </head>
 <body>
+    <h2>Registration for hackathon</h2>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+        Name: <input type="text" name="name">
+        <br><br>
+        E-mail: <input type="text" name="email">
+        <br><br>
+        Role:
+        <input type="checkbox" name="role" value="Project Leader">Project Leader
+        <input type="checkbox" name="role" value="Programmer">Programmer
+        <input type="checkbox" name="role" value="other">Tester
+        <br><br>
+        Dietary Requirements:
+        <select name="diet">
+            <option value="Select">Select</option>
+            <option value="None">None</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Banting">Banting</option>
+        </select>
+        <br><br>
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+</html>
 
 <?php
 // define variables and set to empty values
-$name = $email = $gender = $comment = $website = "";
+// $name, $email, $role;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = test_input($_POST["name"]);
-  $email = test_input($_POST["email"]);
-  $website = test_input($_POST["website"]);
-  $comment = test_input($_POST["comment"]);
-  $gender = test_input($_POST["gender"]);
+    $name = test_input($_POST["name"]);
+    $email = test_input($_POST["email"]);
+    $role = test_input($_POST["role"]);
+    $diet = test_input($_POST["diet"]);
 }
 
 function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
+
+echo "<h2>Your have entered the following information:</h2>";
+echo "Full name <b>{$name}</b>";
+echo "<br>";
+echo "email address <b>{$email}</b>";
+echo "<br>";
+echo "Your role is <b>{$role}</b>";
+echo "<br>";
+echo "with dietary requirements <b>{$diet}</b>";
+echo "<br>";
+include 'menu.inc';
 ?>
 
-<h2>PHP Form Validation Example</h2>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  Name: <input type="text" name="name">
-  <br><br>
-  E-mail: <input type="text" name="email">
-  <br><br>
-  Website: <input type="text" name="website">
-  <br><br>
-  Comment: <textarea name="comment" rows="5" cols="40"></textarea>
-  <br><br>
-  Gender:
-  <input type="radio" name="gender" value="female">Female
-  <input type="radio" name="gender" value="male">Male
-  <input type="radio" name="gender" value="other">Other
-  <br><br>
-  <input type="submit" name="submit" value="Submit">
-</form>
-
-<?php
-echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $website;
-echo "<br>";
-echo $comment;
-echo "<br>";
-echo $gender;
-?>
-
-</body>
-</html>
-?>
+<iframe src="task3.txt" height="400" width="1200">
+    Your browser does not support iframes.
+</iframe>
