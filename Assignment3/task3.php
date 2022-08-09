@@ -28,6 +28,7 @@
 </html>
 
 <?php
+include 'menu.inc';
 // define variables and set to empty values
 // $name, $email, $role;
 
@@ -54,7 +55,6 @@ echo "Your role is <b>{$role}</b>";
 echo "<br>";
 echo "with dietary requirements <b>{$diet}</b>";
 echo "<br>";
-include 'menu.inc';
 ?>
 
 <iframe src="task3.txt" height="400" width="1200">

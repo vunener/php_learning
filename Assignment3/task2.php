@@ -1,4 +1,5 @@
 <?php
+include 'menu.inc';
 function selectProduct() {
     if ($productName == 'product1') {
         $_GET['product'] = 'product1';
@@ -52,7 +53,7 @@ var_dump($produts);
 if (isset($_POST['products'])) {
     calculatePrice();
 }
-include 'menu.inc';
+
 ?>
 <form action="" method="post">
     <label>
