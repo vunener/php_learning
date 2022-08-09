@@ -1,21 +1,26 @@
 <?php
-/*
-(a) Write a function that accepts a mark and returns the result.
-    If the mark is less than 40, then the result is fail.
-    If the mark is between 40 and 49, then the result is supplementary exam.
-    Any mark equal to or above 50 is a pass. A final mark of 75 or greater than 75 is a distinction.
-    Code the logic of deciding the result using if else if.
+function studentResults(int $m) {
+    if ($m >= 75)
+        echo "Distinction";
+    else if ($m >= 50 && $m < 75)
+        echo "Pass";
+    else if ($m >= 40 && $m <= 49)
+        echo "Supplementary";
+    else
+        echo "Fail";
+}
+echo studentResults(25);
+echo "<br>";
+echo studentResults(40);
+echo "<br>";
+echo studentResults(45);
+echo "<br>";
+echo studentResults(50);
+echo "<br>";
+echo studentResults(74);
+echo "<br>";
+echo studentResults(95);
+echo "<br>";
 
-    Invoke the function using the marks 25, 40, 45, 50, 74 and 95, and display the results for each
-    invocation. (6)
-
-(b) Write a for loop that iterates 10 times.
-    In each iteration it should generate a random number between 1 and 100,
-    and determine whether the random number is even or odd.
-    Display the random number generated and whether the number is odd or even. (5)
-(c) Repeat (b) using a do while loop. (5)
-(d) Write a while loop that iterates 10 times.
-    In each iteration it should generate a random number between 1 and 4,
-    and using a switch statement, it should display North for 1, South for 2, East for 3 and West for 4.
-*/
+include 'menu.inc';
 ?>
