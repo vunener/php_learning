@@ -1,67 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+    <h2>Registration for hackathon</h2>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+        Name: <input type="text" name="name">
+        <br><br>
+        E-mail: <input type="text" name="email">
+        <br><br>
+        Role:
+        <input type="checkbox" name="role" value="Project Leader">Project Leader
+        <input type="checkbox" name="role" value="Programmer">Programmer
+        <input type="checkbox" name="role" value="other">Tester
+        <br><br>
+        Dietary Requirements:
+        <select name="diet">
+            <option value="Select">Select</option>
+            <option value="None">None</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Banting">Banting</option>
+        </select>
+        <br><br>
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+</html>
+
 <?php
-/*
-Create a form that present the user with a choice of two products (use check boxes).
-When the form is submitted, the base price (without value added tax (VAT))
-of the selected product will be sent via the GET method to the same page. The script should do the following:
- a discount of 10% on the base price is calculated, which results in the discounted base price
- VAT of 15% is added to the discounted base price, which results in the final price
- The product selected, its base price, the discounted percentage (10%), the discounted
-amount, the discounted base price, the amount of VAT charged, and the final price is presented to the user on separate lines.
+include 'menu.inc';
+// define variables and set to empty values
+$nameErr = $emailErr = $roleErr = $dietErr = "";
+$name = $email = $role = $diet = "";
 
-//////// pseudocode
-1) Search "how to create checkboxes in php"
-2) Make the form dynamic, when submitted it must form a GET request to <where exactly?>
-   and return the $productSelected string, $basePrice(before VAT and discount) of the product selected.
-3) 
-$discountPercentage = 0.1;
-$vatPercentage = 0.15;
-$discountedAmount = $basePrice * $discountPercentage;
-$discountedBasePrice = $basePrice - $discountedAmount;
-$vatAmountCharged = $basePrice * $vatPercentage;
-$finalBasePrice = $basePrice + $vatAmountCharged - $discountedAmount;
-4)
-echo "The product {$productSelected$} has base price {$basePrice}, the discounted amount is {$discountedAmount}
-the discounted base price is then {$discountedBasePrice}, the amount of VAT charged is {$vatAmountCharged} and so
-the final price is {$finalBasePrice}" 
-*/
-?>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required";
+    } else {
+        $name = test_input($_POST["name"]);
+    }
 
-///////// from internet ///////////////
-<?php
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+      } else {
+        $email = test_input($_POST["email"]);
+      }
 
-// Valid options. A whitelist of allowed options.
-$productOptions = array(
-    'product1',
-    'product2'
-);
+    if (empty($_POST["role"])) {
+        $genderErr = "At lest one role is required";
+    } else {
+        $role = test_input($_POST["role"]);
+    }
 
-// Empty array by default.
-$products = array();
-
-// If the POST var "products" is a valid array.
-if(!empty($_POST['products']) && is_array($_POST['products'])) {
-    //Loop through the array of checkbox values.
-    foreach($_POST['products'] as $product){
-        //Make sure that this option is a valid one.
-        if(in_array($product, $productOptions)){
-            //Add the selected options to our $products array.
-            $products[] = $product;
-        }
+    if (empty($_POST["diet"])) {
+        $genderErr = "At lest one diet is required";
+    } else {
+        $diet = test_input($_POST["diet"]);
     }
 }
 
-var_dump($produts);
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 
+echo "<h2>Your have entered the following information:</h2>";
+echo "Full name <b>{$name}</b>";
+echo "<br>";
+echo "email address <b>{$email}</b>";
+echo "<br>";
+echo "Your role is <b>{$role}</b>";
+echo "<br>";
+echo "with dietary requirements <b>{$diet}</b>";
+echo "<br>";
 ?>
 
-<form action="" method="post">
-    <label>
-        Product1
-        <input type="checkbox" name="products[]" value="product1">
-    </label>
-    <label>
-		Product2
-        <input type="checkbox" name="products[]" value="product2">
-    </label>
-    <input type="submit" value="Submit">
-</form>
+<iframe src="task3.txt" height="400" width="1200">
+    Your browser does not support iframes.
+</iframe>
