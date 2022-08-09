@@ -1,12 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+
 <?php
-/*
-1) Here make a form that asks for the name and email address of the user, two text fields.
-2) Three checkboxes `Project Leader`, `Programmer` and `Tester` - user SHOULD choose 1 but can also choose all 3
-3) Dropdown list to input one of the three dietary requirements `None`, `Vegetarian` and `Banting`. User can only choose one
-4) A `Submit` button
-NOTE:
-- All the fields and checkboxes should have labels, form must be sent using the POST request.
-- Check if every field was filed in properly and if not, notify the user that the form is incomplete and that all the fields need to be filled.
-- Present a paragraph below the form with all the data entered(use echo) in a neat and readable format.
-*/
+include 'menu.inc';
+// define variables and set to empty values
+$nameErr = $emailErr = $roleErr = $dietErr = "";
+$name = $email = $role = $diet = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required";
+    } else {
+        $name = test_input($_POST["name"]);
+    }
+
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+      } else {
+        $email = test_input($_POST["email"]);
+      }
+
+    if (empty($_POST["role"])) {
+        $genderErr = "At lest one role is required";
+    } else {
+        $role = test_input($_POST["role"]);
+    }
+
+    if (empty($_POST["diet"])) {
+        $genderErr = "At lest one diet is required";
+    } else {
+        $diet = test_input($_POST["diet"]);
+    }
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+echo "<h2>Your have entered the following information:</h2>";
+echo "Full name <b>{$name}</b>";
+echo "<br>";
+echo "email address <b>{$email}</b>";
+echo "<br>";
+echo "Your role is <b>{$role}</b>";
+echo "<br>";
+echo "with dietary requirements <b>{$diet}</b>";
+echo "<br>";
 ?>
+
+<h2>Registration for hackathon</h2>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+        Name: <input type="text" name="name">
+        <span class="error">* <?php echo $nameErr;?></span>
+        <br><br>
+        E-mail: <input type="text" name="email">
+        <span class="error">* <?php echo $emailErr;?></span>
+        <br><br>
+        Role:
+        <input type="checkbox" name="role" value="Project Leader">Project Leader
+        <input type="checkbox" name="role" value="Programmer">Programmer
+        <input type="checkbox" name="role" value="other">Tester
+        <span class="error">* <?php echo roleErr;?></span>
+        <br><br>
+        Dietary Requirements:
+        <select name="diet">
+            <option value="Select">Select</option>
+            <option value="None">None</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Banting">Banting</option>
+        </select>
+        <span class="error">* <?php echo $dietErr;?></span>
+        <br><br>
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+<iframe src="task3.txt" height="400" width="1200">
+    Your browser does not support iframes.
+</iframe>

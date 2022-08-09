@@ -1,24 +1,40 @@
 <?php
-/*
-Write code to
-- Create an array, $monthsNum, that contains value 1 to 12. The values in the array must be generated using range().
-- Create a second array, $monthsString, that contains 12 strings: January, February, March, April, May, June, July, August, September, October, November and December.
-- Use a suitable loop to iterate through the arrays $monthsNum and $monthsString to generate the following:
-    1 - January
-    2 - February
-    3 - March
-    4 - April
-    5 - May
-    6 - June
-    7 - July
-    8 - August
-    9 - September
-    10 - October
-    11 - November
-    12 - December
-- Invoke rsort() on $monthsString and display the contents of $monthsString after rsort() was invoked.
-- Create an associative array with keys 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12, and values January, February, March, April, May, June, July, August, September, October, November and December. Display the associative array.
-- Invoke asort() on the associative array and display the sorted array.
-- Invoke krsort() on the associative array and display the sorted array.
-*/
+include 'menu.inc';
+echo "////////////// Task8 (a) //////////////<br >";
+$monthsNum = range(1,12);
+$monthsString = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+for ($x = 1; $x <= count($monthsNum); $x++) {
+	echo "{$x} - {$monthsString[$x-1]}<br>";
+}
+
+echo "////////////// Task8 (b) //////////////<br >";
+rsort($monthsString); // 1
+
+foreach($monthsString as $key => $val) {
+	echo "$key - $val <br>";
+}
+echo "////////////// Task8 (c) //////////////<br>";
+$monthsString2 = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+foreach($monthsString2 as $key => $val) {
+	echo $key+1, "=>", $val."<br>";
+	$associateArr = array($key+1, "=>", $val."<br>");
+    //echo $associateArr;
+}
+
+echo "////////////// Task8 (d) //////////////<br>";
+asort($associateArr); // 1
+
+foreach($associateArr as $key => $val) {
+	echo "$key - $val <br>";
+}
+
+echo "////////////// Task8 (e) //////////////<br>";
+krsort($associateArr); // 1
+
+foreach($associateArr as $key => $val) {
+	echo "$key - $val <br>";
+}
+
 ?>
